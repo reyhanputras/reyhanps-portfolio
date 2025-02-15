@@ -5,7 +5,6 @@ import { Cover } from "@/components/ui/cover";
 import AnimatedContent from "@/components/ui/animated-content";
 import DecryptedText from "@/components/ui/decrypted-text";
 import { Meteors } from "@/components/magicui/meteors";
-import { BoxReveal } from "@/components/magicui/box-reveal";
 import { TerminalDemo } from "./components/Terminal";
 import TrueFocus from "@/components/ui/true-focus";
 
