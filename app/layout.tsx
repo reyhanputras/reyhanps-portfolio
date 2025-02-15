@@ -35,23 +35,26 @@ export default function RootLayout({
   return (
     <html lang='en' className='dark'>
       <body className={`${poppins.className} antialiased md:overflow-hidden`}>
-        <div className='hidden md:block'>
-          <AnimatedCursor
-            innerSize={8}
-            outerSize={35}
-            innerScale={2}
-            outerScale={2}
-            outerAlpha={0}
-            innerStyle={{
-              backgroundColor: "white",
-            }}
-            outerStyle={{
-              border: "3px solid white",
-            }}
-          />
+        <div className='md:h-screen h-fit w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative'>
+          <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
+          <div className='hidden md:block'>
+            <AnimatedCursor
+              innerSize={8}
+              outerSize={35}
+              innerScale={2}
+              outerScale={2}
+              outerAlpha={0}
+              innerStyle={{
+                backgroundColor: "white",
+              }}
+              outerStyle={{
+                border: "3px solid white",
+              }}
+            />
+          </div>
+          {children}
+          <FloatingDockUI />
         </div>
-        {children}
-        <FloatingDockUI />
       </body>
     </html>
   );
