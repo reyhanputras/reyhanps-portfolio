@@ -1,101 +1,117 @@
+/** @format */
 import Image from "next/image";
+import profilepic from "@/assets/profile-photo.svg";
+import { Cover } from "@/components/ui/cover";
+import AnimatedContent from "@/components/ui/animated-content";
+import DecryptedText from "@/components/ui/decrypted-text";
+import { Meteors } from "@/components/magicui/meteors";
+import { BoxReveal } from "@/components/magicui/box-reveal";
+import { TerminalDemo } from "./components/Terminal";
+import TrueFocus from "@/components/ui/true-focus";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className='md:h-screen min-h-screen w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative '>
+      {/* Radial gradient for the container to give a faded look */}
+      <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
+      <div className='absolute left-12 hidden md:block'>
+        <Meteors number={20} className='right-0' />
+      </div>
+      <main className='p-12 md:p-24'>
+        <div className='flex flex-col gap-2 md:gap-4 items-center md:items-start'>
+          <a className='text-xl sm:text-3xl md:text-5xl font-bold relative bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500'>
+            <DecryptedText
+              text='Reyhan Putra Syailendra'
+              speed={100}
+              maxIterations={30}
+              animateOn='view'
+              revealDirection='center'
             />
-            Deploy now
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className='flex gap-4 items-center'>
+            <AnimatedContent
+              distance={150}
+              delay={300}
+              direction='horizontal'
+              reverse={true}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}>
+              <div className='text-sm hidden md:block md:text-xl text-white md:font-bold'>
+                <Cover>Fullstack-Developer, Machine Learning Enthusiast</Cover>
+              </div>
+              <div className='text-xs md:hidden md:text-xl text-white md:font-bold'>
+                <Cover>Fullstack-Developer, ML Enthusiast</Cover>
+              </div>
+            </AnimatedContent>
+          </div>
+          <div className='sm:hidden mx-auto -mt-2'>
+            <AnimatedContent
+              distance={150}
+              delay={300}
+              direction='vertical'
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}>
+              <Image
+                src={profilepic}
+                alt='Profile Picture'
+                className='md:w-[32rem] w-[20rem] drop-shadow-md'
+              />
+            </AnimatedContent>
+          </div>
+          <div className='md:hidden absolute -bottom-24 right-12 left-12'>
+            <TerminalDemo />
+            <div className='w-fit py-8 md:py-4'>
+              <TrueFocus
+                sentence='Innovation Collaboration Creativity'
+                manualMode={false}
+                blurAmount={5}
+                borderColor='red'
+                animationDuration={2}
+                pauseBetweenAnimations={1}
+              />
+            </div>
+          </div>
+          <div className='hidden md:block'>
+            <TerminalDemo />
+            <div className='w-fit py-8 md:py-4'>
+              <TrueFocus
+                sentence='Innovation Collaboration Creativity'
+                manualMode={false}
+                blurAmount={5}
+                borderColor='red'
+                animationDuration={2}
+                pauseBetweenAnimations={1}
+              />
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+      <div className='absolute right-12 bottom-0  md:right-24 hidden lg:block'>
+        <AnimatedContent
+          distance={150}
+          delay={300}
+          direction='vertical'
+          reverse={false}
+          config={{ tension: 80, friction: 20 }}
+          initialOpacity={0.2}
+          animateOpacity
+          scale={1.1}
+          threshold={0.2}>
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src={profilepic}
+            alt='Profile Picture'
+            className='md:w-[32rem] w-[20rem] drop-shadow-md'
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </AnimatedContent>
+      </div>
     </div>
   );
 }
