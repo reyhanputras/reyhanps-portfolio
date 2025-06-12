@@ -54,9 +54,15 @@ const Projects = () => {
                 </p>
               </div>
               <div className="pt-4">
-                <InteractiveHoverButton className="font-normal text-sm">
-                  view more
-                </InteractiveHoverButton>
+                <a
+                  href="https://github.com/reyhanputras/solve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <InteractiveHoverButton className="font-normal text-sm">
+                    view more
+                  </InteractiveHoverButton>
+                </a>
               </div>
             </div>
           </SpotlightCard>
