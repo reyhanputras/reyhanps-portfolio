@@ -19,6 +19,7 @@ import Education from "./components/Education";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Certificates from "./components/Certificates";
+import Gallery from "./components/Gallery";
 
 export default function Home() {
   const navItems = [
@@ -48,6 +49,7 @@ export default function Home() {
         <TechStack />
         <Projects />
         <Certificates />
+        <Gallery />
       </main>
     </>
   );
