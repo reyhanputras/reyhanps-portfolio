@@ -90,7 +90,6 @@ export default {
         },
         marqueeR: {
           "0%": { transform: "translateX(-50%)" },
-          "100%": { transform: "translateX(50%)" },
         },
       },
     },
