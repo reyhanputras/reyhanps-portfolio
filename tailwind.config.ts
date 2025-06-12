@@ -16,6 +16,7 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: ["animate-marquee", "animate-marqueeR"],
   darkMode: "class",
   theme: {
     extend: {
