@@ -68,6 +68,8 @@ export default {
       },
       animation: {
         meteor: "meteor 5s linear infinite",
+        marquee: "marquee 30s linear infinite",
+        marqueeR: "marqueeR 30s linear infinite",
       },
       keyframes: {
         meteor: {
@@ -82,6 +84,14 @@ export default {
             transform: "rotate(var(--angle)) translateX(-500px)",
             opacity: "0",
           },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
+        },
+        marqueeR: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(50%)" },
         },
       },
     },

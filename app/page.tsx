@@ -1,6 +1,8 @@
 /** @format */
 "use client";
 import Image from "next/image";
+import Logos from "./Logos";
+import { MarqueeLeft, MarqueeRight } from "@/components/ui/Marquee";
 import profilepic from "@/assets/profile-photo.svg";
 import { Cover } from "@/components/ui/cover";
 import AnimatedContent from "@/components/ui/animated-content";
@@ -10,6 +12,7 @@ import { TerminalDemo } from "./components/Terminal";
 import TrueFocus from "@/components/ui/true-focus";
 import ProfileCard from "@/components/ui/ProfileCard";
 import pattern from "@/assets/pattern.svg";
+import GlassIcons from "@/components/ui/GlassIcons";
 import edu1 from "@/assets/education1.png";
 import edu2 from "@/assets/education2.png";
 import { FloatingNav } from "@/components/ui/floating-navbar";
@@ -19,6 +22,8 @@ import {
   IconMessage,
   IconUser,
 } from "@tabler/icons-react";
+import { AuroraText } from "@/components/magicui/aurora-text";
+
 import { IconBookmarksFilled } from "@tabler/icons-react";
 import { Circle } from "lucide-react";
 import { CircleText } from "@/components/ui/circle-text";
@@ -28,23 +33,28 @@ import FadeContent from "@/components/ui/FadeContent";
 export default function Home() {
   const navItems = [
     {
-      name: "Home",
-      link: "/",
-      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
       name: "About",
       link: "/about",
       icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Contact",
+      name: "Education",
       link: "/contact",
       icon: (
         <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
     },
   ];
+  const arr = [
+    Logos.react,
+    Logos.tailwindcss,
+    Logos.javascript,
+    Logos.nextjs,
+    Logos.html,
+    Logos.express,
+  ];
+  const arr2 = [Logos.git, Logos.java, Logos.python, Logos.mysql, Logos.nodejs];
+
   return (
     <>
       <div className="absolute left-12 hidden md:block">
@@ -251,7 +261,7 @@ export default function Home() {
             threshold={0.2}
             delay={0.3}
           >
-            <div className="p-4 border rounded-3xl dark:bg-neutral-900 bg-neutral-100  border-neutral-200 dark:border-neutral-800 px-4">
+            <div className="hidden lg:block p-4 border rounded-3xl dark:bg-neutral-900 bg-neutral-100  border-neutral-200 dark:border-neutral-800 px-4">
               <Compare
                 secondImage={edu1.src}
                 firstImage={edu2.src}
@@ -262,6 +272,38 @@ export default function Home() {
               />
             </div>
           </AnimatedContent>
+        </div>
+        <div className="py-12 flex flex-col">
+          <FadeContent
+            blur={true}
+            duration={1000}
+            easing="ease-out"
+            initialOpacity={0}
+          >
+            <div className="text-center mb-12">
+              <CircleText text="Tech Stack" />
+            </div>
+          </FadeContent>
+          <MarqueeLeft>
+            {arr.map((Logo, index) => (
+              <div
+                key={index}
+                className="relative h-full w-fit mx-[4rem] flex items-center justify-start"
+              >
+                <Logo />
+              </div>
+            ))}
+          </MarqueeLeft>
+          <MarqueeRight>
+            {arr2.map((Logo, index) => (
+              <div
+                key={index}
+                className="relative h-full w-fit mx-[4rem] flex items-center justify-start"
+              >
+                <Logo />
+              </div>
+            ))}
+          </MarqueeRight>
         </div>
       </main>
     </>
