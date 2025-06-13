@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/text-area";
 import React, { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 
 const ContactMe = () => {
   const [formData, setFormData] = useState({
@@ -45,8 +46,30 @@ const ContactMe = () => {
       console.log(result);
       if (result.status == 200) {
         setStatus(true);
+        toast.success("Message sent succesfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
       } else {
         setStatus(false);
+        toast.error("Failed to send message!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
       }
     } catch (error) {
       setStatus(false);
@@ -57,6 +80,7 @@ const ContactMe = () => {
 
   return (
     <div className="py-12 flex flex-col md:flex-row md:justify-between">
+      <ToastContainer />
       <div className="flex flex-col gap-4 h-[300px]">
         <FuzzyText baseIntensity={0.2}>
           I don&apos;t bite — send a message!
@@ -136,15 +160,6 @@ const ContactMe = () => {
           {status && (
             <p className="mt-4 text-sm text-center text-green-600 dark:text-green-400">
               {status}
-            </p>
-          )}
-          {status ? (
-            <p className="mt-4 text-sm text-center text-green-600 dark:text-green-400">
-              Message sent successfully !
-            </p>
-          ) : (
-            <p className="mt-4 text-sm text-center text-red-600 dark:text-red-600">
-              Failed to send message.
             </p>
           )}
         </form>

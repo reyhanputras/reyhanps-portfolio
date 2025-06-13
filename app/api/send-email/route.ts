@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   const { firstname, lastname, email, message } = await req.json();
-  const name = firstname + lastname;
+  const name = firstname + " " + lastname;
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   const mailOptions = {
     from: `"${name}" <${email}>`, // tampil sebagai pengunjung
     to: process.env.MY_EMAIL, // email kamu
-    subject: "MESSAGE FROM PORTFOLIO VIEWER",
+    subject: `MESSAGE FROM PORTFOLIO VIEWER: ${email} `,
     text: message,
   };
 
