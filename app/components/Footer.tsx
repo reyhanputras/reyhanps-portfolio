@@ -2,7 +2,7 @@ import Logos from "../Logos";
 
 const Footer = () => {
   return (
-    <footer className="py-4 mt-12">
+    <footer className="py-4 ">
       <div className="flex flex-col">
         <div className="flex gap-8 justify-center items-center py-4">
           <a

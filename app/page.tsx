@@ -118,6 +118,7 @@ export default function Home() {
         <div ref={contactRef}>
           <ContactMe />
         </div>
+        <Footer />
       </main>
     </>
   );
