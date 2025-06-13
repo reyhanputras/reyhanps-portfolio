@@ -13,7 +13,7 @@ interface FuzzyTextProps {
 
 const FuzzyText: React.FC<FuzzyTextProps> = ({
   children,
-  fontSize = "clamp(2rem, 8vw, 8rem)",
+  fontSize = "2rem",
   fontWeight = 900,
   fontFamily = "inherit",
   color = "#fff",
@@ -84,19 +84,19 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       offscreen.width = offscreenWidth;
       offscreen.height = tightHeight;
 
-      const xOffset = extraWidthBuffer / 2;
+      const xOffset = 0;
       offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
       offCtx.textBaseline = "alphabetic";
       offCtx.fillStyle = color;
-      offCtx.fillText(text, xOffset - actualLeft, actualAscent);
+      offCtx.fillText(text, -actualLeft, actualAscent);
 
-      const horizontalMargin = 50;
+      const horizontalMargin = 0;
       const verticalMargin = 0;
-      canvas.width = offscreenWidth + horizontalMargin * 2;
+      canvas.width = offscreenWidth;
       canvas.height = tightHeight + verticalMargin * 2;
-      ctx.translate(horizontalMargin, verticalMargin);
+      ctx.translate(0, verticalMargin);
 
-      const interactiveLeft = horizontalMargin + xOffset;
+      const interactiveLeft = xOffset;
       const interactiveTop = verticalMargin;
       const interactiveRight = interactiveLeft + textBoundingWidth;
       const interactiveBottom = interactiveTop + tightHeight;

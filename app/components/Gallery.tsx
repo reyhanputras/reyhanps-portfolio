@@ -95,7 +95,6 @@ const Gallery = () => {
       handle: "2025",
       borderColor: "#006400",
       gradient: "linear-gradient(180deg, #006400, #000)",
-      url: "https://linkedi.com/in/mikechen",
     },
     {
       image: p11.src,
@@ -104,7 +103,6 @@ const Gallery = () => {
       handle: "2023",
       borderColor: "#f4a259",
       gradient: "linear-gradient(180deg, #f4a259, #000)",
-      url: "https://linkedin.com/in/mikechen",
     },
     {
       image: p12.src,

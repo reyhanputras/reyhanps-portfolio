@@ -20,6 +20,8 @@ import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Certificates from "./components/Certificates";
 import Gallery from "./components/Gallery";
+import ContactMe from "./components/ContactMe";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const navItems = [
@@ -42,7 +44,7 @@ export default function Home() {
       <div className="absolute left-12 hidden md:block">
         <Meteors number={20} className="right-0" />
       </div>
-      <main className="p-12 md:p-24 relative">
+      <main className="p-12 md:pb-0 md:px-24 md:pt-24 relative">
         <FloatingNav navItems={navItems} />
         <About />
         <Education />
@@ -50,6 +52,8 @@ export default function Home() {
         <Projects />
         <Certificates />
         <Gallery />
+        <ContactMe />
+        <Footer />
       </main>
     </>
   );
