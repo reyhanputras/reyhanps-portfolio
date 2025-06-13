@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/text-area";
 import React, { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const ContactMe = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const ContactMe = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(false);
 
   const { firstname, lastname, email, message } = formData;
   const handleChange = (
@@ -26,13 +28,35 @@ const ContactMe = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    console.log(firstname, lastname, email, message);
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+      console.log(result);
+      if (result.status == 200) {
+        setStatus(true);
+      } else {
+        setStatus(false);
+      }
+    } catch (error) {
+      setStatus(false);
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
-    <div className="py-12  flex flex-col md:flex-row md:justify-between">
+    <div className="py-12 flex flex-col md:flex-row md:justify-between">
       <div className="flex flex-col gap-4 h-[300px]">
         <FuzzyText baseIntensity={0.2}>
           I don&apos;t bite — send a message!
@@ -55,7 +79,7 @@ const ContactMe = () => {
               <Label htmlFor="firstname">First name</Label>
               <Input
                 id="firstname"
-                placeholder="Tyler"
+                placeholder="John"
                 type="text"
                 name="firstname"
                 value={firstname}
@@ -78,7 +102,7 @@ const ContactMe = () => {
             <Label htmlFor="email">Email Address</Label>
             <Input
               id="email"
-              placeholder="projectmayhem@fc.com"
+              placeholder="youremail@email.com"
               type="email"
               name="email"
               value={email}
@@ -100,10 +124,29 @@ const ContactMe = () => {
           <button
             className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
             type="submit"
+            disabled={loading}
           >
-            Send Message &rarr;
+            {loading ? (
+              <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+            ) : (
+              "Send Message →"
+            )}
             <BottomGradient />
           </button>
+          {status && (
+            <p className="mt-4 text-sm text-center text-green-600 dark:text-green-400">
+              {status}
+            </p>
+          )}
+          {status ? (
+            <p className="mt-4 text-sm text-center text-green-600 dark:text-green-400">
+              Message sent successfully !
+            </p>
+          ) : (
+            <p className="mt-4 text-sm text-center text-red-600 dark:text-red-600">
+              Failed to send message.
+            </p>
+          )}
         </form>
       </div>
     </div>
