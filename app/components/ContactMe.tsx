@@ -57,6 +57,12 @@ const ContactMe = () => {
           theme: "dark",
           transition: Bounce,
         });
+        setFormData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          message: "",
+        });
       } else {
         setStatus(false);
         toast.error("Failed to send message!", {
