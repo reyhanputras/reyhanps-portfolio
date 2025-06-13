@@ -34,7 +34,7 @@ const ContactMe = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/send-email", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
