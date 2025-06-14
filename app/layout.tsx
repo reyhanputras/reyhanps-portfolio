@@ -5,6 +5,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { FloatingDockUI } from "./components/FloatingDock";
 import AnimatedCursor from "react-animated-cursor";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,7 @@ export default function RootLayout({
             />
           </div>
           {children}
+          <Analytics />
         </div>
       </body>
     </html>
